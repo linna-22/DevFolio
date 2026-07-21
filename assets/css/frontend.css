@@ -1,0 +1,10 @@
+/* Carousel Control Script & Custom Scrollbar Hider */
+
+    /* Hide scrollbars for a clean modern interface */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
