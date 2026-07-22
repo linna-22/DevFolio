@@ -1,4 +1,5 @@
 <?php
+require_once "../includes/auth.php";
 ob_start();
 ?>
 
@@ -33,18 +34,14 @@ ob_start();
                     <th class="px-6 py-4">Email</th>
                     <th class="px-6 py-4">Job Title</th>
                     <th class="px-6 py-4">Address</th>
+                    <th class="px-6 py-4">Role</th>
+                    <th class="px-6 py-4 text-center">Action</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100 text-gray-700">
-                <tr>
-                    <td class="px-6 py-4">1</td>
-                    <td class="px-6 py-4 font-medium">John Doe</td>
-                    <td class="px-6 py-4">Male</td>
-                    <td class="px-6 py-4">john@example.com</td>
-                    <td class="px-6 py-4">Software Developer</td>
-                    <td class="px-6 py-4">123 Tech Lane</td>
-                </tr>
+            <tbody id="userTable" class="divide-y divide-gray-100 text-gray-700">
+
             </tbody>
+
         </table>
     </div>
 
@@ -63,19 +60,23 @@ ob_start();
     <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-100 flex justify-between items-center">
             <h2 class="text-xl font-bold text-gray-800">Add New User</h2>
-            <button onclick="toggleModal(false)" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+            <button onclick="toggleModal(false)" class="text-gray-400 hover:text-gray-600"><i
+                    class="fas fa-times"></i></button>
         </div>
-        
-        <form class="p-6 space-y-4">
+
+        <form id="userForm" class="p-6 space-y-4">
+            <input type="hidden" id="user_id" name="id">
             <!-- Reuse your form fields here -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                    <input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    <input type="text" name="full_name" id="full_name"
+                        class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
-                    <select class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    <select name="gender" id="gender"
+                        class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
                         <option>Male</option>
                         <option>Female</option>
                     </select>
@@ -84,30 +85,48 @@ ob_start();
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input type="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    <input type="email" name="email" id="email"
+                        class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
                 </div>
-                <div>
+                <div id="passwordSection">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                    <input type="password" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    <input type="password" name="password" id="password"
+                        class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
                 </div>
-                
+                <div id="roleSection" class="hidden">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+
+                    <select name="role" id="role"
+                        class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
+
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+
+                    </select>
+                </div>
+
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
-                    <input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    <input type="text" name="job_title" id="job_title"
+                        class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                    <input type="text" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    <input type="text" name="address" id="address"
+                        class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
                 </div>
-                
+
             </div>
             <!-- Add remaining fields: Email, Password, Job, Address -->
-            
+
             <div class="flex justify-end gap-3 pt-4">
-                <button type="button" onclick="toggleModal(false)" class="px-6 py-2 bg-gray-100 text-gray-700 font-bold rounded-lg hover:bg-gray-200">Cancel</button>
-                <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700">Save User</button>
+                <button type="button" onclick="toggleModal(false)"
+                    class="px-6 py-2 bg-gray-100 text-gray-700 font-bold rounded-lg hover:bg-gray-200">Cancel</button>
+                <button type="submit" id="saveBtn" class="bg-indigo-600 text-white px-4 py-2 rounded">
+                    Add User
+                </button>
             </div>
         </form>
     </div>
@@ -115,9 +134,36 @@ ob_start();
 
 <script>
     function toggleModal(show) {
-        const modal = document.getElementById('userModal');
-        modal.classList.toggle('hidden', !show);
-        modal.classList.toggle('flex', show);
+
+        const modal = document.getElementById("userModal");
+
+        if (show) {
+
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            if ($("#user_id").val() !== "") {
+                $("#passwordSection").hide();
+                $("#roleSection").show();
+            } else {
+                $("#passwordSection").show();
+                $("#roleSection").hide();
+            }
+
+        } else {
+
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+
+            // Reset form
+            $("#userForm")[0].reset();
+            $("#user_id").val("");
+            $("#modalTitle").text("Add New User");
+
+            $("#saveBtn").text("Save User");
+
+        }
+
+
     }
 </script>
 

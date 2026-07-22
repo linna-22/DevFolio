@@ -1,54 +1,82 @@
 <?php
 
-require_once __DIR__ . "/../../config/db.php";
+require_once "../../config/db.php";
+require_once "../../includes/auth.php";
 
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    exit("Invalid request.");
+header('Content-Type: application/json');
+
+$full_name = trim($_POST['full_name']);
+$gender = trim($_POST['gender']);
+$email = trim($_POST['email']);
+$password = trim($_POST['password']);
+$job_title = trim($_POST['job_title']);
+$address = trim($_POST['address']);
+$role = trim($_POST['role'] ?? 'user');
+
+if (
+    empty($full_name) ||
+    empty($gender) ||
+    empty($email) ||
+    empty($password)
+) {
+
+    echo json_encode([
+        "status" => "error",
+        "message" => "Please fill all required fields."
+    ]);
+
+    exit;
 }
 
-// Get form data
-$full_name = trim($_POST['full_name']);
-$gender    = trim($_POST['gender']);
-$email     = trim($_POST['email']);
-$password  = trim($_POST['password']);
-$job_title = trim($_POST['job_title']);
-$address   = trim($_POST['address']);
+$stmt = $conn->prepare("SELECT id FROM users WHERE email=?");
+$stmt->execute([$email]);
 
-// Hash password
+if ($stmt->get_result()->num_rows > 0) {
+
+    echo json_encode([
+        "status" => "error",
+        "message" => "Email already exists."
+    ]);
+
+    exit;
+}
+
 $password = password_hash($password, PASSWORD_DEFAULT);
 
-// Check if email already exists
-$check = $conn->prepare("SELECT id FROM users WHERE email = ?");
-$check->execute([$email]);
-
-if ($check->get_result()->num_rows > 0) {
-    die("Email already exists.");
-}
-
-// Insert user
 $stmt = $conn->prepare("
-    INSERT INTO users (
-        fullname,
-        gender,
-        email,
-        password,
-        job_title,
-        address
-    ) VALUES (?, ?, ?, ?, ?, ?)
+INSERT INTO users
+(
+fullname,
+gender,
+email,
+password,
+job_title,
+address,
+role
+)
+VALUES
+(
+?,
+?,
+?,
+?,
+?,
+?,
+?
+)
 ");
 
-$success = $stmt->execute([
+$stmt->execute([
     $full_name,
     $gender,
     $email,
     $password,
     $job_title,
-    $address
+    $address,
+    $role
 ]);
 
-if ($success) {
-    header("Location: ../../auth/login.php");
-    exit;
-}
-
-die("Failed to register user.");
+echo json_encode([
+    "status" => "success",
+    "message" => "User created successfully."
+]);

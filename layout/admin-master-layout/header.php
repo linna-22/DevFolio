@@ -22,7 +22,7 @@
                     <i class="fas fa-user-circle text-gray-400"></i> Profile
                 </a>
                 <div class="border-t border-gray-100 my-1"></div>
-                <a href="logout.php"
+                <a href="<?= BASE_URL ?>/actions/auth/logout.php"
                     class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition">
                     <i class="fas fa-sign-out-alt text-red-400"></i> Logout
                 </a>
