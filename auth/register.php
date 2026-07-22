@@ -1,3 +1,6 @@
+<?php 
+require_once "../includes/guest.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +22,7 @@
             <p class="text-gray-500">Join the AdminPanel dashboard system</p>
         </div>
 
-        <form action="../actions/user/store.php" method="POST">
+        <form action="../actions/user/register.php" method="POST">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
@@ -86,7 +89,7 @@
         </form>
 
         <p class="text-center text-sm text-gray-500 mt-6">
-            Already have an account? <a href="#" class="text-indigo-600 font-semibold hover:underline">Login here</a>
+            Already have an account? <a href="../auth/login.php" class="text-indigo-600 font-semibold hover:underline">Login here</a>
         </p>
     </div>
 
