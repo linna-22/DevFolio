@@ -35,6 +35,7 @@ require_once "../config/app.php";
     <script src="<?= BASE_URL ?>/assets/js/user.js"></script>
     <script src="<?= BASE_URL ?>/assets/js/hero.js"></script>
     <script src="<?= BASE_URL ?>/assets/js/about.js"></script>
+    <script src="<?= BASE_URL ?>/assets/js/project.js"></script>
 </body>
 
 </html>
