@@ -51,7 +51,7 @@ ob_start();
 <div id="heroModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50 p-4">
     <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-            <h2 id="modalTitle" class="text-xl font-bold text-gray-800">
+            <h2 id="modalTitleHero" class="text-xl font-bold text-gray-800">
                 Add New Hero
             </h2>
             <button onclick="toggleModal(false)" class="text-gray-400 hover:text-gray-600"><i
@@ -119,7 +119,7 @@ ob_start();
             $("#heroForm")[0].reset();
             $("#hero_id").val("");
 
-            $("#modalTitle").text("Add New Hero");
+            $("#modalTitleHero").text("Edit Hero Information");
             $("#saveBtn").text("Save Hero");
 
         }

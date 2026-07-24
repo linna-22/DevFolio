@@ -51,7 +51,7 @@ $(document).ready(function () {
                         $("#heroForm")[0].reset();
                         $("#hero_id").val("");
 
-                        $("#modalTitle").text("Add New Hero");
+                        $("#modalTitleHero").text("Add New Hero Information");
                         $("#saveBtn").text("Save");
 
                         toggleModal(false);
@@ -109,8 +109,8 @@ $(document).on("click", ".editBtn", function () {
                 $("#desc").val(response.data.desc);
                 $("#freelance_status").val(response.data.freelance_status);
                 // Change the button text
-                $("#modalTitle").text("Edit Hero");
-                $("#saveBtn").text("Update Hero");
+                $("#modalTitleHero").text("Edit Hero Information");
+                $("#saveBtn").text("Update");
 
 
                 // Open the modal
