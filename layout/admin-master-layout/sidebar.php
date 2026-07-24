@@ -35,6 +35,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
             class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('education.php', $current_page); ?>">
             <i class="fas fa-school"></i> Education
         </a>
+        <a href="../admin/social.php"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('social.php', $current_page); ?>">
+            <i class="fas fa-globe"></i> Social
+        </a>
         <?php if ($_SESSION['user']['role'] === 'admin'): ?>
             <a href="<?= BASE_URL ?>/admin/user.php"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?= isActive('user.php', $current_page); ?>">
