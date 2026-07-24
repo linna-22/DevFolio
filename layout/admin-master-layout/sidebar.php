@@ -15,8 +15,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
         }
         ?>
 
-        <a href="../admin/index.php"
-            class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('index.php', $current_page); ?>">
+        <a href="../admin/dashboard.php"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('dashboard.php', $current_page); ?>">
             <i class="fas fa-home"></i> Dashboard
         </a>
         <a href="../admin/hero.php"
@@ -30,6 +30,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <a href="../admin/project.php"
             class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('project.php', $current_page); ?>">
             <i class="fas fa-folder"></i> Project
+        </a>
+        <a href="../admin/education.php"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('education.php', $current_page); ?>">
+            <i class="fas fa-school"></i> Education
         </a>
         <?php if ($_SESSION['user']['role'] === 'admin'): ?>
             <a href="<?= BASE_URL ?>/admin/user.php"
