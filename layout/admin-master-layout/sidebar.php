@@ -23,6 +23,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
             class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('hero.php', $current_page); ?>">
             <i class="fas fa-chart-line"></i> Hero
         </a>
+        <a href="../admin/about.php"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('about.php', $current_page); ?>">
+            <i class="fas fa-id-card"></i> About
+        </a>
         <a href="../admin/project.php"
             class="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition <?php echo isActive('project.php', $current_page); ?>">
             <i class="fas fa-folder"></i> Project

@@ -34,6 +34,7 @@ require_once "../config/app.php";
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?= BASE_URL ?>/assets/js/user.js"></script>
     <script src="<?= BASE_URL ?>/assets/js/hero.js"></script>
+    <script src="<?= BASE_URL ?>/assets/js/about.js"></script>
 </body>
 
 </html>
