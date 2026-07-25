@@ -3,9 +3,19 @@
 require_once "../../config/db.php";
 require_once "../../includes/auth.php";
 
-$sql = "SELECT * FROM socials ORDER BY id DESC";
-$result = $conn->query($sql);
+$userId = $_SESSION['user']['id'];
 
+$stmt = $conn->prepare("
+    SELECT *
+    FROM socials
+    WHERE created_by = ?
+    ORDER BY id DESC
+");
+
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+
+$result = $stmt->get_result();
 $output = "";
 
 if ($result->num_rows > 0) {

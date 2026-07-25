@@ -5,6 +5,8 @@ require_once "../../includes/auth.php";
 
 header("Content-Type: application/json");
 
+$userId = $_SESSION['user']['id'];
+
 $id            = trim($_POST['education_id'] ?? '');
 $school_name   = trim($_POST['school_name'] ?? '');
 $major         = trim($_POST['major'] ?? '');
@@ -12,6 +14,7 @@ $major_detail  = trim($_POST['major_detail'] ?? '');
 $start_year    = trim($_POST['start_year'] ?? '');
 $end_year      = trim($_POST['end_year'] ?? '');
 
+// Validate ID
 if (empty($id)) {
 
     echo json_encode([
@@ -19,14 +22,14 @@ if (empty($id)) {
         "message" => "Education ID is required."
     ]);
     exit;
-
 }
 
+// Validate required fields
 if (
     empty($school_name) ||
     empty($major) ||
     empty($major_detail) ||
-    empty($start_year)  === ''
+    empty($start_year)
 ) {
 
     echo json_encode([
@@ -34,10 +37,9 @@ if (
         "message" => "Please fill all required fields."
     ]);
     exit;
-
 }
 
-// Check duplicate (exclude current record)
+// Check duplicate (only for current user)
 $check = $conn->prepare("
     SELECT id
     FROM educations
@@ -45,14 +47,16 @@ $check = $conn->prepare("
       AND major = ?
       AND start_year = ?
       AND id != ?
+      AND created_by = ?
 ");
 
 $check->bind_param(
-    "ssii",
+    "ssiii",
     $school_name,
     $major,
     $start_year,
-    $id
+    $id,
+    $userId
 );
 
 $check->execute();
@@ -66,9 +70,9 @@ if ($result->num_rows > 0) {
         "message" => "This education already exists."
     ]);
     exit;
-
 }
 
+// Update Education
 $stmt = $conn->prepare("
     UPDATE educations
     SET
@@ -76,18 +80,20 @@ $stmt = $conn->prepare("
         major = ?,
         major_detail = ?,
         start_year = ?,
-        end_year = ?,
+        end_year = ?
     WHERE id = ?
+      AND created_by = ?
 ");
 
 $stmt->bind_param(
-    "sssiiii",
+    "sssssii",
     $school_name,
     $major,
     $major_detail,
     $start_year,
     $end_year,
-    $id
+    $id,
+    $userId
 );
 
 if ($stmt->execute()) {
@@ -105,3 +111,7 @@ if ($stmt->execute()) {
     ]);
 
 }
+
+$stmt->close();
+$check->close();
+$conn->close();

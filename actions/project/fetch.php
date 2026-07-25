@@ -4,8 +4,19 @@ require_once "../../config/db.php";
 require_once "../../includes/auth.php";
 require_once "../../config/app.php";
 
-$sql = "SELECT * FROM projects ORDER BY id DESC";
-$result = $conn->query($sql);
+$userId = $_SESSION['user']['id'];
+
+$stmt = $conn->prepare("
+    SELECT *
+    FROM projects
+    WHERE created_by = ?
+    ORDER BY id DESC
+");
+
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+
+$result = $stmt->get_result();
 
 $output = "";
 

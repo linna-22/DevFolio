@@ -9,6 +9,7 @@ $title  = trim($_POST['title'] ?? '');
 $desc   = trim($_POST['desc'] ?? '');
 $url    = trim($_POST['url'] ?? '');
 $target = trim($_POST['target'] ?? '');
+$created_by = $_SESSION['user']['id'];
 
 if (
     empty($title) ||
@@ -76,21 +77,23 @@ $stmt = $conn->prepare("
         `desc`,
         image,
         url,
-        target
+        target,
+        created_by
     )
     VALUES
     (
-        ?, ?, ?, ?, ?
+        ?, ?, ?, ?, ?, ?
     )
 ");
 
 $stmt->bind_param(
-    "sssss",
+    "sssssi",
     $title,
     $desc,
     $imageName,
     $url,
-    $target
+    $target,
+    $created_by
 );
 
 $stmt->execute();

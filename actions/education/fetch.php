@@ -3,8 +3,20 @@
 require_once "../../config/db.php";
 require_once "../../includes/auth.php";
 
-$sql = "SELECT * FROM educations ORDER BY start_year DESC";
-$result = $conn->query($sql);
+
+$userId = $_SESSION['user']['id'];
+
+$stmt = $conn->prepare("
+    SELECT *
+    FROM educations
+    WHERE created_by = ?
+    ORDER BY id DESC
+");
+
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+
+$result = $stmt->get_result();
 
 $output = "";
 

@@ -17,7 +17,7 @@
             <!-- Dropdown Menu (Hidden by default) -->
             <div id="profileDropdown"
                 class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
-                <a href="profile.php"
+                <a href="<?= BASE_URL ?>/admin/profile.php"
                     class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition">
                     <i class="fas fa-user-circle text-gray-400"></i> Profile
                 </a>
