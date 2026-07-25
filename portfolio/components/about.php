@@ -31,10 +31,10 @@
                     <div class="flex flex-wrap gap-2">
 
                         <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-700 shadow-xs">
-                            PHP / Laravel
+                            <?= htmlspecialchars($about['skills'] ?? 'PHP / Laravel'); ?>
                         </span>
 
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-700 shadow-xs">
+                        <!-- <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-700 shadow-xs">
                             Tailwind CSS
                         </span>
 
@@ -44,7 +44,7 @@
 
                         <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-700 shadow-xs">
                             Git Workflow
-                        </span>
+                        </span> -->
 
                     </div>
 
