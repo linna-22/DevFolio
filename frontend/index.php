@@ -41,7 +41,8 @@ $pageTitle = "DevFolio — Build Your Professional Portfolio";
             <!-- Brand Logo & Name -->
             <div class="flex items-center gap-3">
                 <img src="../assets/images/devfilio-logo.png" alt="DevFolio Logo" class="w-12 h-12 object-contain">
-                <div class="font-bold text-xl text-indigo-600 tracking-tight">DEV<span class="text-gray-500">FOLIO</span></div>
+                <div class="font-bold text-xl text-indigo-600 tracking-tight">DEV<span
+                        class="text-gray-500">FOLIO</span></div>
             </div>
 
             <!-- Navigation Links & Auth Actions -->
@@ -52,10 +53,10 @@ $pageTitle = "DevFolio — Build Your Professional Portfolio";
                     class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition hidden sm:inline-block">Showcase</a>
 
                 <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
-                    <a href="login.php"
+                    <a href="../auth/login.php"
                         class="text-sm font-semibold text-gray-700 hover:text-indigo-600 transition px-4 py-2">Sign
                         In</a>
-                    <a href="register.php"
+                    <a href="../auth/register.php"
                         class="text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition px-5 py-2.5 rounded-xl shadow-sm shadow-indigo-100">Get
                         Started</a>
                 </div>
@@ -70,7 +71,8 @@ $pageTitle = "DevFolio — Build Your Professional Portfolio";
                 class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 mb-8 border border-indigo-100/50 shadow-sm">
                 <i class="fas fa-sparkles"></i> The Ultimate Developer Portfolio Builder
             </span>
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-900 max-w-3xl mx-auto leading-[1.15]">
+            <h1
+                class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-900 max-w-3xl mx-auto leading-[1.15]">
                 Showcase your code. <span class="text-indigo-600">Build your career.</span>
             </h1>
             <p class="mt-6 text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
@@ -229,9 +231,13 @@ $pageTitle = "DevFolio — Build Your Professional Portfolio";
                 class="flex gap-8 overflow-x-auto scroll-smooth no-scrollbar pb-6 -mx-6 px-6 snap-x snap-mandatory">
 
                 <!-- Project Card 1 -->
-                <div class="w-full sm:w-[calc(50%-1rem)] min-w-[85%] sm:min-w-[calc(50%-1rem)] snap-start group cursor-pointer flex-shrink-0">
-                    <div class="bg-gray-100 rounded-3xl overflow-hidden aspect-video relative mb-5 border border-gray-200/60 transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-1">
-                        <img src="https://i.pinimg.com/vwebp/1200x/4d/d5/18/4dd518e71ee140902c824cfab614fc44.webp" alt="E-Commerce Architecture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div
+                    class="w-full sm:w-[calc(50%-1rem)] min-w-[85%] sm:min-w-[calc(50%-1rem)] snap-start group cursor-pointer flex-shrink-0">
+                    <div
+                        class="bg-gray-100 rounded-3xl overflow-hidden aspect-video relative mb-5 border border-gray-200/60 transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-1">
+                        <img src="https://i.pinimg.com/vwebp/1200x/4d/d5/18/4dd518e71ee140902c824cfab614fc44.webp"
+                            alt="E-Commerce Architecture"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="flex items-center justify-between">
                         <div>
@@ -239,15 +245,20 @@ $pageTitle = "DevFolio — Build Your Professional Portfolio";
                                 E-Commerce Architecture</h3>
                             <p class="text-sm text-gray-500 mt-1">Full-stack web app development</p>
                         </div>
-                        <span class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-indigo-600 group-hover:text-white transition"><i
+                        <span
+                            class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-indigo-600 group-hover:text-white transition"><i
                                 class="fas fa-arrow-right text-xs"></i></span>
                     </div>
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="w-full sm:w-[calc(50%-1rem)] min-w-[85%] sm:min-w-[calc(50%-1rem)] snap-start group cursor-pointer flex-shrink-0">
-                    <div class="bg-gray-100 rounded-3xl overflow-hidden aspect-video relative mb-5 border border-gray-200/60 transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-1">
-                        <img src="https://i.pinimg.com/vwebp/1200x/ec/bf/99/ecbf999bdb58a840be252aa58311291a.webp" alt="Admin UI & Analytics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div
+                    class="w-full sm:w-[calc(50%-1rem)] min-w-[85%] sm:min-w-[calc(50%-1rem)] snap-start group cursor-pointer flex-shrink-0">
+                    <div
+                        class="bg-gray-100 rounded-3xl overflow-hidden aspect-video relative mb-5 border border-gray-200/60 transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-1">
+                        <img src="https://i.pinimg.com/vwebp/1200x/ec/bf/99/ecbf999bdb58a840be252aa58311291a.webp"
+                            alt="Admin UI & Analytics"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="flex items-center justify-between">
                         <div>
@@ -255,15 +266,20 @@ $pageTitle = "DevFolio — Build Your Professional Portfolio";
                                 & Analytics</h3>
                             <p class="text-sm text-gray-500 mt-1">Dashboard design & component engineering</p>
                         </div>
-                        <span class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-indigo-600 group-hover:text-white transition"><i
+                        <span
+                            class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-indigo-600 group-hover:text-white transition"><i
                                 class="fas fa-arrow-right text-xs"></i></span>
                     </div>
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="w-full sm:w-[calc(50%-1rem)] min-w-[85%] sm:min-w-[calc(50%-1rem)] snap-start group cursor-pointer flex-shrink-0">
-                    <div class="bg-gray-100 rounded-3xl overflow-hidden aspect-video relative mb-5 border border-gray-200/60 transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-1">
-                       <img src="https://i.pinimg.com/vwebp/1200x/89/b0/b2/89b0b28e633ce9a02ea091bc42603218.webp" alt="Admin UI & Analytics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div
+                    class="w-full sm:w-[calc(50%-1rem)] min-w-[85%] sm:min-w-[calc(50%-1rem)] snap-start group cursor-pointer flex-shrink-0">
+                    <div
+                        class="bg-gray-100 rounded-3xl overflow-hidden aspect-video relative mb-5 border border-gray-200/60 transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-1">
+                        <img src="https://i.pinimg.com/vwebp/1200x/89/b0/b2/89b0b28e633ce9a02ea091bc42603218.webp"
+                            alt="Admin UI & Analytics"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="flex items-center justify-between">
                         <div>
@@ -271,7 +287,8 @@ $pageTitle = "DevFolio — Build Your Professional Portfolio";
                                 Typography App</h3>
                             <p class="text-sm text-gray-500 mt-1">Android font installation tutorial tool</p>
                         </div>
-                        <span class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-indigo-600 group-hover:text-white transition"><i
+                        <span
+                            class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-indigo-600 group-hover:text-white transition"><i
                                 class="fas fa-arrow-right text-xs"></i></span>
                     </div>
                 </div>
@@ -289,8 +306,8 @@ $pageTitle = "DevFolio — Build Your Professional Portfolio";
                 <span>&copy; 2026 DevFolio Dashboard. All rights reserved.</span>
             </div>
             <div class="flex items-center gap-6">
-                <a href="login.php" class="hover:text-indigo-600 transition">Sign In</a>
-                <a href="register.php" class="hover:text-indigo-600 transition">Register</a>
+                <a href="../auth/login.php" class="hover:text-indigo-600 transition">Sign In</a>
+                <a href="../auth/register.php" class="hover:text-indigo-600 transition">Register</a>
             </div>
         </div>
     </footer>

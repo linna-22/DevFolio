@@ -13,6 +13,8 @@ $email     = trim($_POST['email']);
 $password  = trim($_POST['password']);
 $job_title = trim($_POST['job_title']);
 $address   = trim($_POST['address']);
+$username = strtolower($full_name);
+$username = preg_replace('/\s+/', '', $username);
 
 // Hash password
 $password = password_hash($password, PASSWORD_DEFAULT);
@@ -30,16 +32,18 @@ $stmt = $conn->prepare("
     INSERT INTO users (
         fullname,
         gender,
+        username,
         email,
         password,
         job_title,
         address
-    ) VALUES (?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)
 ");
 
 $success = $stmt->execute([
     $full_name,
     $gender,
+    $username,
     $email,
     $password,
     $job_title,

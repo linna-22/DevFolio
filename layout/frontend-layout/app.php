@@ -37,6 +37,18 @@
     <!-- Frontend Footer -->
     <?php include 'footer.php'; ?>
 
+    <script>
+    function scrollCarousel(direction) {
+        const carousel = document.getElementById('projectCarousel');
+        const scrollAmount = carousel.clientWidth * 0.75; // Scroll by 75% of view width
+        
+        if (direction === 'left') {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
+</script>
 </body>
 
 </html>

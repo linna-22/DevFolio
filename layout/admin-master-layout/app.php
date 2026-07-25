@@ -32,7 +32,13 @@ require_once "../config/app.php";
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="<?= BASE_URL ?>/assets/js/user.js"></script>
+    <?php
+    $page = basename($_SERVER['PHP_SELF'], '.php');
+    ?>
+
+    <?php if (file_exists("../assets/js/{$page}.js")): ?>
+        <script src="<?= BASE_URL ?>/assets/js/<?= $page ?>.js"></script>
+    <?php endif; ?>
 </body>
 
 </html>

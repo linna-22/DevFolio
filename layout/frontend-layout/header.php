@@ -1,7 +1,7 @@
  <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="text-xl font-bold tracking-tight text-gray-900">
-                portfolio<span class="text-indigo-600">.</span>
+            <a href="#" class="text-xl font-bold tracking-tight" style="color: #4338ca;">
+                <?= htmlspecialchars($owner['fullname']) ?><span class="text-indigo-600">.</span>
             </a>
             
             <!-- Desktop Links -->

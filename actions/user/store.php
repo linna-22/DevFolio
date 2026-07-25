@@ -12,6 +12,8 @@ $password = trim($_POST['password']);
 $job_title = trim($_POST['job_title']);
 $address = trim($_POST['address']);
 $role = trim($_POST['role'] ?? 'user');
+$username = strtolower($full_name);
+$username = preg_replace('/\s+/', '', $username);
 
 if (
     empty($full_name) ||
@@ -48,6 +50,7 @@ INSERT INTO users
 (
 fullname,
 gender,
+username,
 email,
 password,
 job_title,
@@ -62,6 +65,7 @@ VALUES
 ?,
 ?,
 ?,
+?,
 ?
 )
 ");
@@ -69,6 +73,7 @@ VALUES
 $stmt->execute([
     $full_name,
     $gender,
+    $username,
     $email,
     $password,
     $job_title,
