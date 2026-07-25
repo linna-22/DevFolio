@@ -5,13 +5,26 @@
     </div>
     <div class="flex items-center gap-2">
         <!-- <button class="text-gray-500 hover:text-indigo-600"><i class="fas fa-bell"></i></button> -->
-        <p class="text-indigo-600">Lina</p>
+        <p class="text-indigo-600"><?php echo $_SESSION['user']['name']; ?></p>
         <!-- Profile Dropdown Container -->
         <div class="relative">
             <!-- Clickable Avatar Button -->
+            <?php
+            $name = trim($_SESSION['user']['name'] ?? '');
+
+            $words = explode(' ', $name);
+
+            $initials = strtoupper(
+                substr($words[0], 0, 1) .
+                (isset($words[1]) ? substr($words[1], 0, 1) : '')
+            );
+            ?>
+
             <button onclick="toggleDropdown()"
                 class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
-                LN
+
+                <?= htmlspecialchars($initials) ?>
+
             </button>
 
             <!-- Dropdown Menu (Hidden by default) -->

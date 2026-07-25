@@ -24,8 +24,8 @@ if (!password_verify($password, $user['password'])) {
 // Store user in session
 $_SESSION['user'] = [
     'id'       => $user['id'],
-    'name'     => $user['fullname'],   // Make sure your column is full_name
-    'username' => $user['username'],    // Required for portfolio URL
+    'name'     => $user['fullname'],  
+    'username' => $user['username'], 
     'email'    => $user['email'],
     'role'     => $user['role']
 ];
